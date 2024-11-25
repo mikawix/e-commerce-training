@@ -3,6 +3,8 @@ import { CategoryLink } from '~/src/components/category-link/category-link';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
+import styles from './route.module.scss';
+import classNames from 'classnames';
 
 export default function HomePage() {
     return (
@@ -15,7 +17,9 @@ export default function HomePage() {
                 />
                 <div className="heroBannerOverlay">
                     <div className="heroBannerSubtitle">ReClaim</div>
-                    <h1 className="heroBannerTitle">Reuse. Repurpose. Relove.</h1>
+                    <h1 className={classNames('heroBannerTitle', styles.header1)}>
+                        Keep calm and reclaim
+                    </h1>
                     <CategoryLink categorySlug="all-products">
                         <LabelWithArrow>Shop Collections</LabelWithArrow>
                     </CategoryLink>

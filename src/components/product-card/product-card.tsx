@@ -39,17 +39,18 @@ export const ProductCard = ({
                 {ribbon && <span className={styles.ribbon}>{ribbon}</span>}
             </div>
 
-            <div className={styles.name}>{name}</div>
-
-            {inventoryStatus === products.InventoryStatus.OUT_OF_STOCK ? (
-                <div className={styles.outOfStock}>Out of stock</div>
-            ) : (
-                <ProductPrice
-                    className={styles.price}
-                    price={price}
-                    discountedPrice={discountedPrice}
-                />
-            )}
+            <div className={styles.div1}>
+                <div className={styles.name}>{name}</div>
+                {inventoryStatus === products.InventoryStatus.OUT_OF_STOCK ? (
+                    <div className={styles.outOfStock}>Out of stock</div>
+                ) : (
+                    <ProductPrice
+                        className={styles.price}
+                        price={price}
+                        discountedPrice={discountedPrice}
+                    />
+                )}
+            </div>
         </div>
     );
 };

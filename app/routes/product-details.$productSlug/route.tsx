@@ -18,6 +18,7 @@ import { useProductDetails } from '~/src/wix/products';
 import { getErrorMessage, removeQueryStringFromUrl } from '~/src/wix/utils';
 
 import styles from './route.module.scss';
+import { TrashIcon } from '../../../src/components/icons/trash-icon';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     if (!params.productSlug) throw new Response('Bad Request', { status: 400 });
@@ -145,11 +146,12 @@ export default function ProductDetailsPage() {
                             onChange={handleQuantityChange}
                             disabled={outOfStock}
                         />
+                        <TrashIcon height={27} />
                     </div>
 
                     <button
                         className={classNames('button', 'primaryButton', styles.addToCartButton)}
-                        onClick={() => handleAddToCart().catch(handleError)}
+                        onClick={handleAddToCart}
                         disabled={outOfStock || isAddingToCart}
                     >
                         {outOfStock ? 'Out of stock' : 'Add to Cart'}
@@ -173,7 +175,9 @@ export default function ProductDetailsPage() {
                                                 __html: section.description,
                                             }}
                                         />
-                                    ) : null,
+                                    ) : (
+                                        <TrashIcon height={27} />
+                                    ),
                                 }))}
                                 initialOpenItemIndex={0}
                             />
